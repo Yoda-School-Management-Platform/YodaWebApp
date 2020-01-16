@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yodawebapp/utils/responsive_layout.dart';
 
 class NavBar extends StatelessWidget {
-  final navLinks = ["Home", "Products", "Features", "Contact"];
+  final navLinks = ["Home", "Products", "Features", "Security", "Contact"];
 
   List<Widget> navItem() {
     return navLinks.map((text) {

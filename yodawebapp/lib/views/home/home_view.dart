@@ -18,13 +18,17 @@ class HomeView extends StatelessWidget {
         Color(0xFFFCFDFD),
       ])),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[NavBar(), Body()],
-          ),
-        ),
-      ),
+          backgroundColor: Colors.transparent,
+          body: Column(
+            children: <Widget>[
+              NavBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Body()
+                ),
+              )
+            ],
+          )),
     );
   }
 }
@@ -43,8 +47,7 @@ class LargeChild extends StatefulWidget {
   _LargeChild createState() => _LargeChild();
 }
 
-class _LargeChild extends State<LargeChild>  with SingleTickerProviderStateMixin {
-
+class _LargeChild extends State<LargeChild> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
