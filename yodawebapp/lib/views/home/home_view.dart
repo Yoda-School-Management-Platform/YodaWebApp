@@ -1,8 +1,9 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 import 'package:yodawebapp/utils/responsive_layout.dart';
+import 'package:yodawebapp/widgets/animation/animated_background.dart';
+import 'package:yodawebapp/widgets/buttons/button.dart';
 import 'package:yodawebapp/widgets/navigation_bar/navigation_bar.dart';
 import 'package:yodawebapp/widgets/search/search.dart';
 
@@ -50,6 +51,8 @@ class LargeChild extends StatefulWidget {
 class _LargeChild extends State<LargeChild> {
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return SizedBox(
       height: 1080,
       child: Stack(
@@ -57,18 +60,8 @@ class _LargeChild extends State<LargeChild> {
         children: <Widget>[
           Container(
               color: Colors.red,
-              child: Stack(
-                children: <Widget>[
-                  Image.asset('images/background.png'),
-                  Center(
-                    child: SizedBox(
-                      height: 700,
-                      width: 700,
-                      child: Image.asset('images/fluid 5.png'),
-                    ),
-                  )
-                ],
-              )),
+              child: AnimatedWidgetView()
+          ),
           FractionallySizedBox(
             alignment: Alignment.centerLeft,
             widthFactor: .6,
@@ -99,10 +92,13 @@ class _LargeChild extends State<LargeChild> {
                                   color: Colors.white))
                         ]),
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Search()
+                  Row(
+                    children: <Widget>[
+                      Text('Jetzt registrieren', style: TextStyle(fontSize: 30,
+                          fontWeight: FontWeight.bold, color: Colors.white),),
+                     Button(text: 'Registrieren',color: Colors.white, textColor: Colors.black, onTap: () {print('Elias ');},)
+                    ],
+                  )
                 ],
               ),
             ),

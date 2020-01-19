@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yodawebapp/views/home/home_view.dart';
-import 'package:yodawebapp/views/home/registration_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RegistrationView(),
+      home: HomeView()
     );
   }
 }

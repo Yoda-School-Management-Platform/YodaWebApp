@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yodawebapp/utils/responsive_layout.dart';
+import 'package:yodawebapp/views/login_view/login_view.dart';
 
 class NavBar extends StatelessWidget {
   final navLinks = ["Home", "Products", "Features", "Security", "Contact"];
@@ -86,7 +87,9 @@ class NavBar extends StatelessWidget {
                                 child: Material(
                                     color: Colors.transparent,
                                     child: InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        showLogin(context);
+                                      },
                                       child: Center(
                                         child: Text("Login",
                                             style: TextStyle(
@@ -104,4 +107,13 @@ class NavBar extends StatelessWidget {
           ),
         ));
   }
+
+  Future<void> showLogin(context) async {
+    showDialog(context: context,
+    builder: (BuildContext ctx) {
+      return LoginView();
+    }
+    );
+  }
+
 }
