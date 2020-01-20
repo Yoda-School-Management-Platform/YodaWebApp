@@ -1,54 +1,54 @@
 import 'package:flutter/material.dart';
 
 
-class AnimatedWidgetView extends StatefulWidget {
-  AnimatedWidgetView({Key key}) : super(key: key);
+class AnimatedBackground extends StatefulWidget {
+  AnimatedBackground({Key key}) : super(key: key);
 
-  _AnimatedWidgetViewState createState() => _AnimatedWidgetViewState();
+  _AnimatedBackground createState() => _AnimatedBackground();
 }
 
-class _AnimatedWidgetViewState extends State<AnimatedWidgetView>
+class _AnimatedBackground extends State<AnimatedBackground>
     with TickerProviderStateMixin {
   AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    controller = AnimationController(vsync: this, duration: const Duration(seconds: 4));
     controller.repeat(reverse: true);
-    //controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Stack(
-          children: <Widget>[
-            SizedBox(
-              child: Image.asset('images/background.png'),
-            ),
-            Center(child: GrowingContainer(controller: controller,)),
-          ],
-        ),
-      )
+        body: Center(
+          child: Stack(
+            children: <Widget>[
+              SizedBox(
+                child: Image.asset('images/background.png'),
+              ),
+              Center(child: MovingContainer(controller: controller,)),
+            ],
+          ),
+        )
     );
   }
 }
 
-class GrowingContainer extends AnimatedWidget {
-  GrowingContainer({AnimationController controller})
+class MovingContainer extends AnimatedWidget {
+  MovingContainer({AnimationController controller})
       : super(
-      listenable: Tween<double>(begin: 0, end: 200).animate(controller));
+      listenable: Tween<double>(begin: -10, end: 10).animate(controller));
 
   @override
   Widget build(BuildContext context) {
     Animation<double> animation = listenable;
-    return Container(
-      height: animation.value,
-      width: animation.value,
+    return Transform.translate(
+      offset: Offset(animation.value, animation.value * -1),
+      child: Container(
+      height: 700,
+      width: 700,
       child: Image.asset('images/fluid 5.png'),
-    );
+    ),);
   }
 }

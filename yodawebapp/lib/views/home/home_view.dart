@@ -60,7 +60,7 @@ class _LargeChild extends State<LargeChild> {
         children: <Widget>[
           Container(
               color: Colors.red,
-              child: AnimatedWidgetView()
+              child: AnimatedBackground()
           ),
           FractionallySizedBox(
             alignment: Alignment.centerLeft,

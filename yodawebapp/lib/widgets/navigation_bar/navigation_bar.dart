@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yodawebapp/utils/responsive_layout.dart';
-import 'package:yodawebapp/views/login_view/login_view.dart';
+import 'package:yodawebapp/views/login/login_view.dart';
 
 class NavBar extends StatelessWidget {
   final navLinks = ["Home", "Products", "Features", "Security", "Contact"];
