@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:yodawebapp/utils/responsive_layout.dart';
+import 'package:yodawebapp/views/registration/registration_view.dart';
 import 'package:yodawebapp/widgets/animation/animated_background.dart';
 import 'package:yodawebapp/widgets/buttons/button.dart';
 import 'package:yodawebapp/widgets/navigation_bar/navigation_bar.dart';
@@ -96,7 +97,10 @@ class _LargeChild extends State<LargeChild> {
                     children: <Widget>[
                       Text('Jetzt registrieren', style: TextStyle(fontSize: 30,
                           fontWeight: FontWeight.bold, color: Colors.white),),
-                     Button(text: 'Registrieren',color: Colors.white, textColor: Colors.black, onTap: () {print('Elias ');},)
+                     Button(text: 'Registrieren',color: Colors.white, textColor: Colors.black, onTap: () {Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => RegistrationView()),
+                     );},)
                     ],
                   )
                 ],

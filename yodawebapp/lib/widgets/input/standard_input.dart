@@ -7,8 +7,10 @@ class StandardInput extends StatefulWidget {
   final onChanged;
   final labelText;
   final obscureText;
+  final controller;
+  final inputFormatters;
 
-  const StandardInput({Key key, this.stream, this.onChanged, this.labelText, this.obscureText}) : super(key: key);
+  const StandardInput({Key key, this.stream, this.onChanged, this.labelText, this.obscureText, this.controller, this.inputFormatters}) : super(key: key);
 
   _StandardInput createState() => _StandardInput();
 }
@@ -23,7 +25,9 @@ class _StandardInput extends State<StandardInput> {
           builder: (context, snapshot) {
             return TextField(
                 onChanged: widget.onChanged,
-                obscureText: widget.obscureText,
+                obscureText: widget.obscureText != null ? widget.obscureText : false,
+                inputFormatters: widget.inputFormatters != null ? widget.inputFormatters : [],
+                controller: widget.controller != null ? widget.controller : null,
                 decoration: InputDecoration(
                   labelText: widget.labelText,
                   errorText: snapshot.error,

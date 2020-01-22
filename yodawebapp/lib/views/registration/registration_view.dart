@@ -11,10 +11,11 @@ class RegistrationView extends StatefulWidget {
 class _RegistrationView extends State<RegistrationView> {
 
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: RegistrationForm(),
+    );
   }
 }
-
 
 
 

@@ -1,8 +1,20 @@
 import 'dart:async';
 
+import 'package:yodawebapp/utils/const.dart';
+
 mixin RegistrationFormValidator {
 
-  var schoolValidator = StreamTransformer<String,String>.fromHandlers(
+  var domainValidator = StreamTransformer<String,String>.fromHandlers(
+      handleData: (domain, sink) {
+        if(domain.length > 5) {
+          sink.add(domain);
+        } else {
+          sink.addError("Schule zu kurz");
+        }
+      }
+  );
+
+  var nameValidator = StreamTransformer<String,String>.fromHandlers(
       handleData: (school, sink) {
         if(school.length > 5) {
           sink.add(school);

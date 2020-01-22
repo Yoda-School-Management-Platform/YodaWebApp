@@ -19,6 +19,7 @@ class LoginFormValidatorBloc extends Object with LoginFormValidator {
   Stream<bool> get schoolSubmitCheck => Rx.combineLatest3(school, username, password, (s,u,p) => true);
 
   void dispose() {
+    _schoolController?.close();
     _usernameController?.close();
     _passwordController?.close();
   }
