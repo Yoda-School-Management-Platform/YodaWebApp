@@ -40,7 +40,10 @@ class _RegistrationForm extends State<RegistrationForm> {
                 onChanged: registrationFormBloc.passwordChanged,
                 labelText: 'Password',
                 obscureText: true,),
-              submitButton(registrationFormBloc),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 70),
+                child: submitButton(registrationFormBloc),
+              ),
             ],
           ),
         ));

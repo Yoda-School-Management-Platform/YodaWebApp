@@ -25,7 +25,10 @@ class _LoginForm extends State<LoginForm> {
               StandardInput(stream: loginFormBloc.school, onChanged: loginFormBloc.schoolChanged,labelText: 'Schule', obscureText: false,),  //Schule
               widget.loginType != 'school' ? StandardInput(stream: loginFormBloc.username, onChanged: loginFormBloc.usernameChanged,labelText: 'Username',obscureText: false,): Container(),
               StandardInput(stream: loginFormBloc.password, onChanged: loginFormBloc.passwordChanged,labelText: 'Password',obscureText: true,),
-              submitButton(loginFormBloc, widget.loginType),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 70),
+                child: submitButton(loginFormBloc, widget.loginType),
+              ),
             ],
           ),
         ));

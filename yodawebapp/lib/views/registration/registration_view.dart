@@ -12,7 +12,12 @@ class _RegistrationView extends State<RegistrationView> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RegistrationForm(),
+      body: Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 800),
+          child: RegistrationForm(),
+        ),
+      ),
     );
   }
 }
