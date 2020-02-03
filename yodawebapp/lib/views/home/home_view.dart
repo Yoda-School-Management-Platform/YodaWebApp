@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:yodawebapp/utils/responsive_layout.dart';
@@ -25,9 +24,7 @@ class HomeView extends StatelessWidget {
             children: <Widget>[
               NavBar(),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Body()
-                ),
+                child: SingleChildScrollView(child: Body()),
               )
             ],
           )),
@@ -59,10 +56,7 @@ class _LargeChild extends State<LargeChild> {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Container(
-              color: Colors.red,
-              child: AnimatedBackground()
-          ),
+          Container(color: Colors.red, child: AnimatedBackground()),
           FractionallySizedBox(
             alignment: Alignment.centerLeft,
             widthFactor: .6,
@@ -95,12 +89,21 @@ class _LargeChild extends State<LargeChild> {
                   ),
                   Row(
                     children: <Widget>[
-                      Text('Jetzt registrieren', style: TextStyle(fontSize: 30,
-                          fontWeight: FontWeight.bold, color: Colors.white),),
-                     Button(text: 'Registrieren',color: Colors.white, textColor: Colors.black, onTap: () {Navigator.push(
-                       context,
-                       MaterialPageRoute(builder: (context) => RegistrationView()),
-                     );},)
+                      Text(
+                        'Jetzt registrieren',
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      Button(
+                        text: 'Registrieren',
+                        color: Colors.white,
+                        textColor: Colors.black,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                      )
                     ],
                   )
                 ],

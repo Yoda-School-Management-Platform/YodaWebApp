@@ -4,6 +4,7 @@ import 'package:yodawebapp/blocs/registration_form/registration_form_validator_b
 import 'package:yodawebapp/formatter/DomainFormatter.dart';
 import 'package:yodawebapp/utils/color_palette.dart';
 import 'package:yodawebapp/utils/const.dart';
+import 'package:yodawebapp/views/loading/loading_view.dart';
 import 'package:yodawebapp/widgets/input/standard_input.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -30,12 +31,10 @@ class _RegistrationForm extends State<RegistrationForm> {
                 labelText: 'Domain', controller: domainTextController, inputFormatters: [new DomainFormatter()],),
               StandardInput(stream: registrationFormBloc.name,
                 onChanged: registrationFormBloc.nameChanged,
-                labelText: 'Schule-Name',
-                obscureText: false,), //Schule
+                labelText: 'Schule-Name',), //Schule
               StandardInput(stream: registrationFormBloc.username,
                 onChanged: registrationFormBloc.usernameChanged,
-                labelText: 'Username',
-                obscureText: false,),
+                labelText: 'Username'),
               StandardInput(stream: registrationFormBloc.password,
                 onChanged: registrationFormBloc.passwordChanged,
                 labelText: 'Password',
@@ -89,7 +88,7 @@ class _RegistrationForm extends State<RegistrationForm> {
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft),),
                             child: Center(
-                              child: Text("Login",
+                              child: Text("Registrieren",
                                 style: TextStyle(color: Colors.white),),
                             ),
                           )
@@ -101,7 +100,9 @@ class _RegistrationForm extends State<RegistrationForm> {
 
 
   _submit() {
-    print("Login");
+    Navigator.pushNamed(
+      context, '/loading'
+    );
   }
 
 }

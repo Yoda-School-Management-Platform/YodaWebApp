@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yodawebapp/utils/color_palette.dart';
 import 'package:yodawebapp/utils/responsive_layout.dart';
 import 'package:yodawebapp/views/login/login_view.dart';
+import 'package:yodawebapp/widgets/buttons/border_button.dart';
 
 class NavBar extends StatelessWidget {
   final navLinks = ["Home", "Products", "Features", "Security", "Contact"];
 
-  List<Widget> navItem() {
+  List<Widget> navItems() {
     return navLinks.map((text) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -65,9 +67,10 @@ class NavBar extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                           Row(
-                            children: navItem(),
+                            children: navItems(),
                           ),
-                          Container(
+                          BorderButton(text: 'Login', color: ColorPalette.yellow, onPressed: () => showLogin(context),)
+                          /*Container(
                               margin: EdgeInsets.only(left: 20),
                               width: 120,
                               height: 40,
@@ -99,7 +102,7 @@ class NavBar extends StatelessWidget {
                                                 fontFamily: "Montserrat-Bold")),
                                       ),
                                     )),
-                              )),
+                              )),*/
                         ])
                   : Image.network("assets/images/menu.png",
                       width: 26, height: 26),

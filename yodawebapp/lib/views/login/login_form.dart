@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yodawebapp/blocs/login_form/login_form_validator_bloc.dart';
 import 'package:yodawebapp/utils/color_palette.dart';
+import 'package:yodawebapp/utils/data/rest_datasource.dart';
 import 'package:yodawebapp/widgets/input/standard_input.dart';
+import 'package:http/http.dart' as http;
 
 class LoginForm extends StatefulWidget {
   final loginType;
@@ -13,6 +15,13 @@ class LoginForm extends StatefulWidget {
 
 class _LoginForm extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  final api = new RestDatasource();
+
+  final schoolTextController = TextEditingController();
+  final usernameTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
+
+
 
   Widget build(BuildContext context) {
     final loginFormBloc = LoginFormValidatorBloc();
@@ -22,9 +31,9 @@ class _LoginForm extends State<LoginForm> {
           padding: EdgeInsets.all(30.0),
           child: ListView(
             children: <Widget>[
-              StandardInput(stream: loginFormBloc.school, onChanged: loginFormBloc.schoolChanged,labelText: 'Schule', obscureText: false,),  //Schule
-              widget.loginType != 'school' ? StandardInput(stream: loginFormBloc.username, onChanged: loginFormBloc.usernameChanged,labelText: 'Username',obscureText: false,): Container(),
-              StandardInput(stream: loginFormBloc.password, onChanged: loginFormBloc.passwordChanged,labelText: 'Password',obscureText: true,),
+              StandardInput(stream: loginFormBloc.school, controller: schoolTextController,onChanged: loginFormBloc.schoolChanged,labelText: 'Schule'),  //Schule
+              widget.loginType != 'school' ? StandardInput(stream: loginFormBloc.username, controller: usernameTextController, onChanged: loginFormBloc.usernameChanged,labelText: 'Username'): Container(),
+              StandardInput(stream: loginFormBloc.password, controller: passwordTextController, onChanged: loginFormBloc.passwordChanged,labelText: 'Password',obscureText: true),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 70),
                 child: submitButton(loginFormBloc, widget.loginType),
@@ -80,8 +89,10 @@ class _LoginForm extends State<LoginForm> {
   }
 
 
-  _submit() {
-    print("Login");
+  _submit() async {
+    api.login(schoolTextController.text, usernameTextController.text, passwordTextController.text).then((String res) {
+      print(res);
+    });
   }
 
 }
