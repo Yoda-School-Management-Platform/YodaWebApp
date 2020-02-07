@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yodawebapp/states/auth_state/auth_state.dart';
+import 'package:yodawebapp/auth/auth_contract/auth_contract.dart';
+import 'package:yodawebapp/auth/auth_state/auth_state.dart';
 import 'package:yodawebapp/views/home/home_view.dart';
 import 'package:yodawebapp/views/school/dashboard_view.dart';
 
@@ -7,14 +8,9 @@ class Presenter extends StatefulWidget {
   _Presenter createState() => _Presenter();
 }
 
-class _Presenter extends State<Presenter> implements AuthStateListener {
+class _Presenter extends State<Presenter> implements AuthStateListener, AuthContract {
 
   BuildContext _ctx;
-
-  _Presenter() {
-    var authStateProvider = new AuthStateProvider();
-    authStateProvider.subscribe(this);
-  }
 
   Widget build(BuildContext context) {
     _ctx = context;
