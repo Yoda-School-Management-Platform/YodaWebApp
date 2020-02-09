@@ -34,22 +34,24 @@ class NavBar extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        gradient: LinearGradient(
-                            colors: [
-                              Color(0xFFF2C139),
-                              Color(0xFFCE768D),
-                              Color(0xFF7932CD),
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)),
-                    child: Center(
-                      child: Text("Y",
-                          style: TextStyle(fontSize: 30, color: Colors.white)),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Color(0xFFF2C139),
+                                Color(0xFFCE768D),
+                                Color(0xFF7932CD),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)),
+                      child: Center(
+                        child: Text("Y",
+                            style: TextStyle(fontSize: 30, color: Colors.white)),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -57,20 +59,20 @@ class NavBar extends StatelessWidget {
                   ),
                   Text("YODA",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                           fontSize: 26,
                           color: Color.fromRGBO(251, 209, 128, 1)))
                 ],
               ),
               !ResponsiveLayout.isSmallScreen(context)
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                          Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
                             children: navItems(),
                           ),
-                          BorderButton(text: 'Login', color: ColorPalette.yellow, onPressed: () => showLogin(context),)
-                          /*Container(
+                    BorderButton(text: 'Login', color: ColorPalette.yellow, onPressed: () => showLogin(context),)
+                    /*Container(
                               margin: EdgeInsets.only(left: 20),
                               width: 120,
                               height: 40,
@@ -103,9 +105,9 @@ class NavBar extends StatelessWidget {
                                       ),
                                     )),
                               )),*/
-                        ])
+                  ])
                   : Image.network("assets/images/menu.png",
-                      width: 26, height: 26),
+                  width: 26, height: 26),
             ],
           ),
         ));

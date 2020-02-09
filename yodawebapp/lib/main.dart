@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yodawebapp/utils/routes.dart';
 import 'package:yodawebapp/view_presenter/view_presenter.dart';
 import 'package:yodawebapp/views/home/home_view.dart';
+import 'package:yodawebapp/views/login/login_view.dart';
 import 'package:yodawebapp/views/school/dashboard_view.dart';
 
 void main() => runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: routes,
+      //routes: routes,
     );
   }
 }
