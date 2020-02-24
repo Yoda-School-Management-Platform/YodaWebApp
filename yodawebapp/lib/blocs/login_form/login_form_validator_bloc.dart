@@ -3,6 +3,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:yodawebapp/blocs/login_form/login_form_validator.dart';
 
 class LoginFormValidatorBloc extends Object with LoginFormValidator {
+
   final _schoolController = BehaviorSubject<String>();
   final _usernameController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
@@ -17,6 +18,8 @@ class LoginFormValidatorBloc extends Object with LoginFormValidator {
 
   Stream<bool> get submitCheck => Rx.combineLatest2(school, password, (u,p) => true);
   Stream<bool> get schoolSubmitCheck => Rx.combineLatest3(school, username, password, (s,u,p) => true);
+
+
 
   void dispose() {
     _schoolController?.close();

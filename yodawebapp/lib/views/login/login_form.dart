@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:yodawebapp/auth/auth_state/auth_state.dart';
 import 'package:yodawebapp/blocs/login_form/login_form_validator_bloc.dart';
+import 'package:yodawebapp/user/user.dart';
 import 'package:yodawebapp/utils/color_palette.dart';
 import 'package:yodawebapp/utils/data/rest_datasource.dart';
 import 'package:yodawebapp/widgets/input/standard_input.dart';
-import 'package:http/http.dart' as http;
+import 'dart:html';
 
 class LoginForm extends StatefulWidget {
   final loginType;
@@ -16,6 +18,7 @@ class LoginForm extends StatefulWidget {
 class _LoginForm extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final api = new RestDatasource();
+  final auth = new AuthStateProvider();
 
   final schoolTextController = TextEditingController();
   final usernameTextController = TextEditingController();
@@ -55,7 +58,7 @@ class _LoginForm extends State<LoginForm> {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                          onTap: snapshot.hasData ? () => _submit() : null,
+                          onTap: snapshot.hasData ? () => _submit() : null,//_submit() : null,
                           child: Container(
                             width: 120,
                             height: 40,
@@ -89,10 +92,10 @@ class _LoginForm extends State<LoginForm> {
   }
 
 
-  _submit() async {
-    api.login(schoolTextController.text, usernameTextController.text, passwordTextController.text).then((String res) {
-      print(res);
-    });
+  void _submit() async {
+    User user = await api.login(schoolTextController.text, usernameTextController.text, passwordTextController.text);
+    window.localStorage['auth'] = user.authToken;
+    auth.notify(AuthState.LOGGED_IN);
+    Navigator.pushNamed(context, '/school');
   }
-
 }

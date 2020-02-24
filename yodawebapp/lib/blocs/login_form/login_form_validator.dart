@@ -23,9 +23,9 @@ mixin LoginFormValidator {
   );
 
   var passwordValidator = StreamTransformer<String,String>.fromHandlers(
-      handleData: (username, sink) {
-        if(username.length > 6) {
-          sink.add(username);
+      handleData: (password, sink) {
+        if(password.length > 5) {
+          sink.add(password);
         } else {
           sink.addError("Passwort zu kurz");
         }

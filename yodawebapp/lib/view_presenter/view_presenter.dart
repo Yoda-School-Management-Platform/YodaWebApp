@@ -10,30 +10,24 @@ class Presenter extends StatefulWidget {
 
 class _Presenter extends State<Presenter> implements AuthStateListener, AuthContract {
 
+ void initState() {
+    super.initState();
+    var authStateProvider = new AuthStateProvider();
+    authStateProvider.subscribe(this);
+  }
+
   BuildContext _ctx;
 
   Widget build(BuildContext context) {
     _ctx = context;
-    return Container();
-
-
-
-    /*return StreamBuilder(
-      stream: authBloc.authState,
-      builder: (context, snapshot) {
-        if (snapshot.hasData && snapshot.data == AuthState.LOGGED_IN) {
-          return SchoolDashboardView();
-        } else {
-          return HomeView();
-        }
-      },
-    );*/
+    return HomeView();
   }
 
   @override
   void onAuthStateChanged(AuthState state) {
+    print('AuthState Changed');
     if(state == AuthState.LOGGED_IN)
-      Navigator.of(_ctx).pushReplacementNamed("/home");
+      Navigator.of(_ctx).pushReplacementNamed("/school");
     else
       Navigator.of(_ctx).pushReplacementNamed("/home");
   }

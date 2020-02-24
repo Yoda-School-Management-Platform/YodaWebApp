@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:yodawebapp/utils/routes.dart';
 import 'package:yodawebapp/view_presenter/view_presenter.dart';
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      initialRoute: '/home',
+      initialRoute: '/',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

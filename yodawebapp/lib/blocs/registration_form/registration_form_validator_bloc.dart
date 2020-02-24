@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import 'package:yodawebapp/blocs/registration_form/registration_form_validator.dart';
+import 'package:yodawebapp/utils/data/rest_datasource.dart';
 
 class RegistrationFormValidatorBloc extends Object with RegistrationFormValidator {
+
+  final api = new RestDatasource();
+
   final _domainController = BehaviorSubject<String>();
   final _nameController = BehaviorSubject<String>();
   final _usernameController = BehaviorSubject<String>();

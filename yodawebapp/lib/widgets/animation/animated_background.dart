@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 
 class AnimatedBackground extends StatefulWidget {
-  AnimatedBackground({Key key}) : super(key: key);
+
+  final height;
+  final width;
+
+  const AnimatedBackground({Key key, this.height, this.width}) : super(key: key);
 
   _AnimatedBackground createState() => _AnimatedBackground();
 }
@@ -25,9 +29,11 @@ class _AnimatedBackground extends State<AnimatedBackground>
           child: Stack(
             children: <Widget>[
               SizedBox(
-                child: Image.asset('images/background.png'),
+                height: widget.height,
+                width: widget.width,
+                child: Image.asset('images/background.png', fit: BoxFit.fill),
               ),
-              Center(child: MovingContainer(controller: controller,)),
+              Center(child: MovingContainer(controller: controller, )),
             ],
           ),
         )
@@ -36,6 +42,7 @@ class _AnimatedBackground extends State<AnimatedBackground>
 }
 
 class MovingContainer extends AnimatedWidget {
+
   MovingContainer({AnimationController controller})
       : super(
       listenable: Tween<double>(begin: -10, end: 10).animate(controller));
@@ -48,7 +55,7 @@ class MovingContainer extends AnimatedWidget {
       child: Container(
       height: 700,
       width: 700,
-      child: Image.asset('images/fluid 5.png'),
+      child: Image.asset('images/fluid 5.png',),
     ),);
   }
 }

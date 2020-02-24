@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yodawebapp/widgets/drawer/school_dashboard_drawer.dart';
 
 class SchoolDashboardView extends StatelessWidget {
-  const SchoolDashboardView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +10,23 @@ class SchoolDashboardView extends StatelessWidget {
     );
   }
 }
-/*
-class Body extends StatelessWidget {
+
+class StudentDashboardView extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayout(
-      largeScreen: LargeChild(),
-      smallScreen: SmallChild(),
+    return Scaffold(
+      body: SchoolDashboardDrawer(),
     );
   }
-}*/
+}
+
+class TeacherDashboardView extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SchoolDashboardDrawer(),
+    );
+  }
+}

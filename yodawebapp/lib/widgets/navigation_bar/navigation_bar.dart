@@ -117,8 +117,7 @@ class NavBar extends StatelessWidget {
     showDialog(context: context,
     builder: (BuildContext ctx) {
       return LoginView();
-    }
-    );
+    });
   }
 
 }

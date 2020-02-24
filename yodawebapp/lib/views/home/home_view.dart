@@ -56,7 +56,7 @@ class _LargeChild extends State<LargeChild> {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Container(color: Colors.red, child: AnimatedBackground()),
+          Container(color: Colors.red, child: AnimatedBackground(width: screenSize.width, height: screenSize.height,)),
           FractionallySizedBox(
             alignment: Alignment.centerLeft,
             widthFactor: .6,
