@@ -9,7 +9,8 @@ import 'package:yodawebapp/utils/items/drawer_item.dart';
 class SchoolDashboardDrawer extends StatelessWidget {
 
   final List<DrawerItem> items = [
-    DrawerItem('Home', HomeView()),
+    DrawerItem('Home', Loading()),
+    DrawerItem('Register', Loading()),
     DrawerItem('Register', Loading()),
   ];
 

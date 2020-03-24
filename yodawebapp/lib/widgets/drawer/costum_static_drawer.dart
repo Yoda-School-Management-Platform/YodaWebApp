@@ -6,6 +6,7 @@ import 'package:yodawebapp/utils/color_palette.dart';
 
 import 'package:yodawebapp/utils/items/drawer_item.dart';
 import 'package:yodawebapp/views/home/home_view.dart';
+import 'package:yodawebapp/views/loading/loading_view.dart';
 import 'package:yodawebapp/widgets/drawer/personal_dashboard_area.dart';
 
 class StandardDrawer extends StatefulWidget {
@@ -19,7 +20,7 @@ class StandardDrawer extends StatefulWidget {
 class _StandardDrawer extends State<StandardDrawer> {
 
   final auth = AuthStateProvider();
-  Widget currentPage = HomeView();
+  Widget currentPage = Loading();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,7 @@ class _StandardDrawer extends State<StandardDrawer> {
               ],
             ),
           ),
-          Expanded(
+          Flexible(
             child: currentPage,
           )
         ],
